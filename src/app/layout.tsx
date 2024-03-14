@@ -9,13 +9,18 @@ import { createClient, repositoryName } from "@/prismicio";
 
 const urbanist = Urbanist({ subsets: ["latin"] });
 
-export async function genrateMetadata(): Promise<Metadata> {
+export async function generateMetadata(): Promise<Metadata> {
   const client = createClient();
   const settings = await client.getSingle("settings");
 
   return {
     title: settings.data.meta_title,
     description: settings.data.meta_description,
+    icons: {
+      icon: "/favicon.ico",
+      shortcut: "/favicon.ico",
+      apple: "/favicon.ico",
+    },
   };
 }
 
