@@ -34,11 +34,21 @@
           "thumbnails": []
         }
       },
+      "url": {
+        "type": "Text",
+        "config": {
+          "label": "url",
+          "placeholder": ""
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "image_block": {
+              "type": "SharedSlice"
+            },
             "text_block": {
               "type": "SharedSlice"
             }

@@ -6,6 +6,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MdArrowOutward } from "react-icons/md";
 import { Content } from "@prismicio/client";
+import { PrismicNextLink } from "@prismicio/next";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -33,6 +34,8 @@ export default function ContentList({
   const urlPrefix = contentType === "Blog" ? "/blog" : "/projects";
 
   useEffect(() => {
+    console.log(items);
+
     // Animate list-items in with a stagger
     let ctx = gsap.context(() => {
       itemsRef.current.forEach((item, index) => {
@@ -54,7 +57,7 @@ export default function ContentList({
               end: "bottom center",
               toggleActions: "play none none none",
             },
-          },
+          }
         );
       });
 
@@ -117,7 +120,7 @@ export default function ContentList({
       : fallbackItemImage;
     return asImageSrc(image, {
       fit: "crop",
-      w: 220,
+      w: 320,
       h: 320,
       exp: -10,
     });
@@ -131,7 +134,6 @@ export default function ContentList({
       img.src = url;
     });
   }, [contentImages]);
-
   return (
     <>
       <ul
@@ -147,13 +149,20 @@ export default function ContentList({
             className="list-item opacity-0"
           >
             <a
-              href={`${urlPrefix}/${post.uid}`}
+            
+              href={
+                contentType === "Blog"
+                  ? `${urlPrefix}/${post.uid}`
+                  : `https://${post.data.url} `
+              }
+              target={contentType === "Blog" ? undefined : "_blank"}
+
               className="flex flex-col justify-between border-t border-t-slate-100 py-10  text-slate-200 md:flex-row "
               aria-label={post.data.title || ""}
             >
               <div className="flex flex-col">
                 <span className="text-3xl font-bold">{post.data.title}</span>
-                <div className="flex gap-3 text-yellow-400">
+                <div className="flex gap-3 text-blue-400">
                   {post.tags.map((tag, index) => (
                     <span key={index} className="text-lg font-bold">
                       {tag}

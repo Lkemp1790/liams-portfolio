@@ -34,6 +34,13 @@
           "placeholder": ""
         }
       },
+      "url": {
+        "type": "Text",
+        "config": {
+          "label": "Url",
+          "placeholder": ""
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
