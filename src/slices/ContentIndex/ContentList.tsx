@@ -119,10 +119,6 @@ export default function ContentList({
       ? item.data.hover_image
       : fallbackItemImage;
     return asImageSrc(image, {
-      fit: "crop",
-      w: 320,
-      h: 320,
-      exp: -10,
     });
   });
 
@@ -179,7 +175,7 @@ export default function ContentList({
 
         {/* Hover element */}
         <div
-          className="hover-reveal pointer-events-none absolute left-0 top-0 -z-10 h-[320px] w-[220px] rounded-lg bg-cover bg-center opacity-0 transition-[background] duration-300"
+          className="hover-reveal pointer-events-none absolute left-0 top-0 -z-10 md:h-[320px] md:w-[320px] h-[220px] w-[220px] rounded-lg bg-cover bg-center opacity-0 transition-[background] duration-300 bg-no-repeat"
           style={{
             backgroundImage:
               currentItem !== null ? `url(${contentImages[currentItem]})` : "",
