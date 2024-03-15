@@ -113,8 +113,15 @@ export default function ContentList({
     setHovering(false);
     setCurrentItem(null);
   };
-
-  const contentImages = items.map((item) => {
+ const sortedItems = items
+  .slice()
+  .sort((a: any, b: any) => {
+    const dateA = new Date(a.data.date);
+    const dateB = new Date(b.data.date);
+    return dateA.getTime() - dateB.getTime();
+  })
+  .reverse();
+  const contentImages = sortedItems.map((item) => {
     const image = isFilled.image(item.data.hover_image)
       ? item.data.hover_image
       : fallbackItemImage;
@@ -131,14 +138,7 @@ export default function ContentList({
     });
   }, [contentImages]);
 
-  const sortedItems = items
-  .slice()
-  .sort((a: any, b: any) => {
-    const dateA = new Date(a.data.date);
-    const dateB = new Date(b.data.date);
-    return dateA.getTime() - dateB.getTime();
-  })
-  .reverse();
+ 
 
   return (
     <>
