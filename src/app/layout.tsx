@@ -6,6 +6,8 @@ import Footer from "@/components/Footer";
 import clsx from "clsx";
 import { PrismicPreview } from "@prismicio/next";
 import { createClient, repositoryName } from "@/prismicio";
+import PlausibleProvider from "next-plausible";
+
 
 const urbanist = Urbanist({ subsets: ["latin"] });
 
@@ -31,6 +33,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="bg-slate-900 text-slate-100">
+      <head>
+        <PlausibleProvider domain="liamkemp.dev" />
+      </head>
       <body className={clsx(urbanist.className, "relative min-h-screen")}>
         <Header />
         {children}
