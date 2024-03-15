@@ -130,6 +130,16 @@ export default function ContentList({
       img.src = url;
     });
   }, [contentImages]);
+
+  const sortedItems = items
+  .slice()
+  .sort((a: any, b: any) => {
+    const dateA = new Date(a.data.date);
+    const dateB = new Date(b.data.date);
+    return dateA.getTime() - dateB.getTime();
+  })
+  .reverse();
+
   return (
     <>
       <ul
@@ -137,7 +147,7 @@ export default function ContentList({
         className="grid border-b border-b-slate-100"
         onMouseLeave={onMouseLeave}
       >
-        {items.map((post, index) => (
+        {sortedItems.map((post, index) => (
           <li
             key={index}
             ref={(el) => (itemsRef.current[index] = el)}
