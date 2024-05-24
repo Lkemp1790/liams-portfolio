@@ -53,11 +53,12 @@
           "placeholder": ""
         }
       },
-      "twitter": {
+      "upwork": {
         "type": "Link",
         "config": {
-          "label": "Twitter",
+          "label": "Upwork",
           "placeholder": "",
+          "allowTargetBlank": false,
           "select": null
         }
       },
@@ -66,6 +67,7 @@
         "config": {
           "label": "Github",
           "placeholder": "",
+          "allowTargetBlank": false,
           "select": null
         }
       },

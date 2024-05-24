@@ -422,15 +422,15 @@ interface SettingsDocumentData {
   cta_label: prismic.KeyTextField;
 
   /**
-   * Twitter field in *Settings*
+   * Upwork field in *Settings*
    *
    * - **Field Type**: Link
    * - **Placeholder**: *None*
-   * - **API ID Path**: settings.twitter
+   * - **API ID Path**: settings.upwork
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  twitter: prismic.LinkField;
+  upwork: prismic.LinkField;
 
   /**
    * Github field in *Settings*
