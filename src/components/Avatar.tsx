@@ -2,8 +2,8 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import { ImageField } from "@prismicio/client";
-import { PrismicNextImage } from "@prismicio/next";
+import { ImageField } from "@/data";
+import PrismicNextImage from "@/components/PrismicNextImage";
 import clsx from "clsx";
 import usePrefersReducedMotion from "@/hooks/usePrefersReducedMotion";
 
@@ -82,7 +82,7 @@ export default function Avatar({
         <PrismicNextImage
           field={image}
           className="avatar-image h-full w-full object-fill"
-          imgixParams={{ q: 90 }}
+          imgixParams={{ q: 100 }}
         />
         <div className="highlight absolute inset-0 hidden w-full scale-110 bg-gradient-to-tr from-transparent via-white to-transparent opacity-0 md:block"></div>
       </div>

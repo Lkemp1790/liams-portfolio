@@ -1,12 +1,12 @@
 import Bounded from "@/components/bounded";
 import Heading from "@/components/Heading";
-import { Content } from "@prismicio/client";
-import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { ExperienceSlice, SliceComponentProps } from "@/data";
+import RichText from "@/components/RichText";
 
 /**
  * Props for `Experience`.
  */
-export type ExperienceProps = SliceComponentProps<Content.ExperienceSlice>;
+export type ExperienceProps = SliceComponentProps<ExperienceSlice>;
 
 /**
  * Component for "Experience" Slices.
@@ -32,7 +32,7 @@ const Experience = ({ slice }: ExperienceProps): JSX.Element => {
             <span>{item.institution}</span>
           </div>
           <div className="prose prose-lg prose-invert mt-4">
-            <PrismicRichText field={item.description} />
+            <RichText field={item.description} />
           </div>
         </div>
       ))}

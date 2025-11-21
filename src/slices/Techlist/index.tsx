@@ -1,7 +1,6 @@
 "use client";
 
-import { Content } from "@prismicio/client";
-import { SliceComponentProps } from "@prismicio/react";
+import { TechlistSlice, SliceComponentProps } from "@/data";
 import React, { useLayoutEffect, useRef } from "react";
 import { MdCircle } from "react-icons/md";
 import { gsap } from "gsap";
@@ -15,7 +14,7 @@ gsap.registerPlugin(ScrollTrigger);
 /**
  * Props for `TechList`.
  */
-export type TechListProps = SliceComponentProps<Content.TechlistSlice>;
+export type TechListProps = SliceComponentProps<TechlistSlice>;
 
 /**
  * Component for "TechList" Slices.

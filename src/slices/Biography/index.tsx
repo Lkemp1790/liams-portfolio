@@ -2,14 +2,13 @@ import Avatar from "@/components/Avatar";
 import Bounded from "@/components/bounded";
 import Button from "@/components/Button";
 import Heading from "@/components/Heading";
-import { Content } from "@prismicio/client";
-
-import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { BiographySlice, SliceComponentProps } from "@/data";
+import RichText from "@/components/RichText";
 
 /**
  * Props for `Biography`.
  */
-export type BiographyProps = SliceComponentProps<Content.BiographySlice>;
+export type BiographyProps = SliceComponentProps<BiographySlice>;
 
 /**
  * Component for "Biography" Slices.
@@ -27,12 +26,14 @@ const Biography = ({ slice }: BiographyProps): JSX.Element => {
         </Heading>
 
         <div className="prose prose-xl prose-slate prose-invert col-start-1">
-          <PrismicRichText field={slice.primary.description} />
+          <RichText field={slice.primary.description} />
         </div>
-        <Button
-          linkField={slice.primary.button_link}
-          label={slice.primary.button_text}
-        />
+        {slice.primary.button_link && slice.primary.button_text && (
+          <Button
+            linkField={slice.primary.button_link}
+            label={slice.primary.button_text}
+          />
+        )}
 
         <Avatar
           image={slice.primary.avatar}

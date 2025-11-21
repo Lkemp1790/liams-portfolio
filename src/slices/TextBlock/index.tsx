@@ -1,10 +1,10 @@
-import { Content } from "@prismicio/client";
-import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { TextBlockSlice, SliceComponentProps } from "@/data";
+import RichText from "@/components/RichText";
 
 /**
  * Props for `TextBlock`.
  */
-export type TextBlockProps = SliceComponentProps<Content.TextBlockSlice>;
+export type TextBlockProps = SliceComponentProps<TextBlockSlice>;
 
 /**
  * Component for "TextBlock" Slices.
@@ -12,7 +12,7 @@ export type TextBlockProps = SliceComponentProps<Content.TextBlockSlice>;
 const TextBlock = ({ slice }: TextBlockProps): JSX.Element => {
   return (
     <div className="max-w-prose">
-      <PrismicRichText field={slice.primary.text} />
+      <RichText field={slice.primary.text} />
     </div>
   );
 };

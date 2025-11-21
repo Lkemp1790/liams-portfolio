@@ -1,15 +1,17 @@
-import { SliceZone } from "@prismicio/react";
-import { Content } from "@prismicio/client";
+import SliceZone from "@/components/SliceZone";
+import { Page } from "@/data";
 
 import { components } from "@/slices";
 import Heading from "@/components/Heading";
 import Bounded from "@/components/bounded";
 import { formatDate } from "@/utils/formatDate";
+import Button from "@/components/Button";
+import PrismicNextImage from "@/components/PrismicNextImage";
 
 export default function ContentBody({
   page,
 }: {
-  page: Content.BlogPostDocument | Content.ProjectDocument;
+  page: Page;
 }) {
   const formattedDate = formatDate(page.data.date);
   return (
@@ -26,6 +28,28 @@ export default function ContentBody({
         <p className="mt-8 border-b border-slate-600 text-xl font-medium text-slate-300">
           {formattedDate}
         </p>
+
+        {page.data.live_link && (
+          <div className="mt-8">
+            <Button
+              linkField={page.data.live_link}
+              label="View Live Site"
+              className="text-slate-900 bg-blue-400 border-blue-400 hover:bg-blue-300"
+            />
+          </div>
+        )}
+
+        {/* Featured Image */}
+        {page.data.hover_image?.url && (
+          <div className="mt-8 rounded-xl overflow-hidden border-2 border-slate-800">
+             <PrismicNextImage
+               field={page.data.hover_image}
+               className="w-full h-auto object-cover"
+               priority
+             />
+          </div>
+        )}
+
         <div className="prose prose-lg prose-invert mt-12 w-full max-w-none md:mt-20">
           <SliceZone slices={page.data.slices} components={components} />
         </div>

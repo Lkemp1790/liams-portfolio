@@ -1,20 +1,18 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
-import { asImageSrc, isFilled } from "@prismicio/client";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MdArrowOutward } from "react-icons/md";
-import { Content } from "@prismicio/client";
-import { PrismicNextLink } from "@prismicio/next";
+import { Page, ContentIndexSlice } from "@/data";
 
 gsap.registerPlugin(ScrollTrigger);
 
 type ContentListProps = {
-  items: Content.BlogPostDocument[] | Content.ProjectDocument[];
-  contentType: Content.ContentIndexSlice["primary"]["content_type"];
-  fallbackItemImage: Content.ContentIndexSlice["primary"]["fallback_item_image"];
-  viewMoreText: Content.ContentIndexSlice["primary"]["view_more_text"];
+  items: Page[];
+  contentType: ContentIndexSlice["primary"]["content_type"];
+  fallbackItemImage: ContentIndexSlice["primary"]["fallback_item_image"];
+  viewMoreText: ContentIndexSlice["primary"]["view_more_text"];
 };
 
 export default function ContentList({
@@ -34,8 +32,6 @@ export default function ContentList({
   const urlPrefix = contentType === "Blog" ? "/blog" : "/projects";
 
   useEffect(() => {
-    console.log(items);
-
     // Animate list-items in with a stagger
     let ctx = gsap.context(() => {
       itemsRef.current.forEach((item, index) => {
@@ -122,11 +118,10 @@ export default function ContentList({
   })
   .reverse();
   const contentImages = sortedItems.map((item) => {
-    const image = isFilled.image(item.data.hover_image)
+    const image = (item.data.hover_image && item.data.hover_image.url)
       ? item.data.hover_image
       : fallbackItemImage;
-    return asImageSrc(image, {
-    });
+    return image?.url || "";
   });
 
   // Preload images
@@ -138,7 +133,7 @@ export default function ContentList({
     });
   }, [contentImages]);
 
- 
+
 
   return (
     <>
@@ -155,13 +150,9 @@ export default function ContentList({
             className="list-item opacity-0"
           >
             <a
-            
-              href={
-                contentType === "Blog"
-                  ? `${urlPrefix}/${post.uid}`
-                  : `https://${post.data.url} `
-              }
-              target={contentType === "Blog" ? undefined : "_blank"}
+
+              href={`${urlPrefix}/${post.uid}`}
+              target={undefined}
 
               className="flex flex-col justify-between border-t border-t-slate-100 py-10  text-slate-200 md:flex-row "
               aria-label={post.data.title || ""}

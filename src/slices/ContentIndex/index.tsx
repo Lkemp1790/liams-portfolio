@@ -1,28 +1,18 @@
-import { Content, isFilled } from "@prismicio/client";
-import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
-import { createClient } from "@/prismicio";
+"use client";
+
+import { ContentIndexSlice, SliceComponentProps } from "@/data";
+import { projects } from "@/data";
+import RichText from "@/components/RichText";
 import ContentList from "./ContentList";
 import Bounded from "@/components/bounded";
 import Heading from "@/components/Heading";
-/**
- * Props for `BlogPostIndex`.
- */
-export type BlogPostIndexProps =
-  SliceComponentProps<Content.ContentIndexSlice>;
 
-/**
- * Component for "BlogPostIndex" Slices.
- */
-const BlogPostIndex = async ({
-  slice,
-}: BlogPostIndexProps): Promise<JSX.Element> => {
-  const client = createClient();
-  const blogPosts = await client.getAllByType("blog_post");
-  const projects = await client.getAllByType("project");
+export type BlogPostIndexProps = SliceComponentProps<ContentIndexSlice>;
 
+const BlogPostIndex = ({ slice }: BlogPostIndexProps): JSX.Element => {
   const contentType = slice.primary.content_type || "Blog";
-
-  const items = contentType === "Blog" ? blogPosts : projects;
+  // We removed blogPosts, so if contentType is Blog, return empty array or just projects (though it shouldn't happen with current data)
+  const items = contentType === "Blog" ? [] : projects;
 
   return (
     <Bounded
@@ -32,9 +22,9 @@ const BlogPostIndex = async ({
       <Heading size="xl" className="mb-8">
         {slice.primary.heading}
       </Heading>
-      {isFilled.richText(slice.primary.description) && (
+      {slice.primary.description && (
         <div className="prose prose-xl prose-invert mb-10">
-          <PrismicRichText field={slice.primary.description} />
+          <RichText field={slice.primary.description} />
         </div>
       )}
       <ContentList
