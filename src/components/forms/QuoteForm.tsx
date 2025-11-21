@@ -100,7 +100,7 @@ export default function QuoteForm() {
         </div>
         <h2 className="text-2xl font-bold text-slate-100">Request Received!</h2>
         <p className="max-w-md text-slate-400">
-          Thanks for reaching out, {formData.name}. I've received your project details and will review them shortly. Expect a proposal or follow-up email within 24-48 hours.
+          Thanks for reaching out, {formData.name}. I&apos;ve received your project details and will review them shortly. Expect a proposal or follow-up email within 24-48 hours.
         </p>
       </div>
     );
@@ -129,7 +129,7 @@ export default function QuoteForm() {
       {/* Step 1: Contact Information */}
       {step === 1 && (
         <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-300">
-          <h3 className="text-xl font-bold text-white">Let's start with the basics</h3>
+          <h3 className="text-xl font-bold text-white">Let&apos;s start with the basics</h3>
 
           <div className="grid gap-6 md:grid-cols-2">
             <div>
@@ -245,7 +245,7 @@ export default function QuoteForm() {
 
           <div>
             <label htmlFor="description" className="mb-2 block text-sm font-medium text-slate-300">Project Overview</label>
-            <p className="mb-2 text-xs text-slate-500">Briefly describe the main goal of the project and who it's for.</p>
+            <p className="mb-2 text-xs text-slate-500">Briefly describe the main goal of the project and who it&apos;s for.</p>
             <textarea
               name="description"
               id="description"

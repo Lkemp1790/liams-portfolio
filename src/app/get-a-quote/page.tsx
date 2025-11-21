@@ -18,8 +18,8 @@ export default function QuotePage() {
           </Heading>
           <p className="text-xl text-slate-300">
             Ready to bring your idea to life? Fill out the details below to get a custom quote.
-            Whether it's a new website, a complex web app, or an automation workflow,
-            I'm here to help you build it right.
+            Whether it&apos;s a new website, a complex web app, or an automation workflow,
+            I&apos;m here to help you build it right.
           </p>
         </div>
 
