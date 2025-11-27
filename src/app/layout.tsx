@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import clsx from "clsx";
 import PlausibleProvider from "next-plausible";
 import { settings } from "@/data";
+import { FathomAnalytics } from "./fathom";
 
 const urbanist = Urbanist({ subsets: ["latin"] });
 
@@ -32,6 +33,7 @@ export default function RootLayout({
         <PlausibleProvider domain="liamkemp.dev" />
       </head>
       <body className={clsx(urbanist.className, "relative min-h-screen")}>
+        <FathomAnalytics />
         <Header />
         {children}
         <Footer />

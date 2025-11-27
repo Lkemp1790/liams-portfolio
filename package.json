@@ -19,6 +19,7 @@
     "@tailwindcss/typography": "^0.5.10",
     "@types/three": "^0.162.0",
     "clsx": "^2.1.0",
+    "fathom-client": "^3.7.2",
     "next": "^14.2.33",
     "next-plausible": "^3.12.0",
     "react": "^18",
