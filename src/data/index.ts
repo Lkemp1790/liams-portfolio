@@ -265,6 +265,69 @@ export const pages: Page[] = [
 
 export const projects: Page[] = [
   {
+    uid: "voxenly",
+    type: "project",
+    tags: ["AI Voice", "Automation", "Next.js", "Tailwind"],
+    data: {
+      title: "Voxenly",
+      date: "2026-01-03",
+      hover_image: { url: "/voxenly.jpg" },
+      meta_title: "Voxenly - AI Voice Agents That Take Action",
+      meta_description:
+        "The AI Voice Platform that takes action. Automate workflows with intelligent voice agents that schedule appointments, update CRMs, and handle complex requests 24/7.",
+      meta_image: { url: "" },
+      live_link: { url: "https://voxenly.com/", target: "_blank" },
+      slices: [
+        {
+          slice_type: "text_block",
+          primary: {
+            text: {
+              text: "Voxenly is an advanced AI voice platform that goes beyond simple voice interaction. It enables businesses to deploy intelligent voice agents that can perform real-world actions, such as scheduling appointments, updating CRM systems, and handling complex customer inquiries without human intervention.",
+            },
+          },
+        },
+        {
+          slice_type: "text_block",
+          primary: {
+            text: {
+              text: "The platform's core strength lies in its 'Magic Builder,' which allows for the creation of sophisticated conversation flows using natural language instructions. As shown in the dashboard screenshots, users can simply describe how they want their agent to behave, and the AI automatically calibrates its responses and logic.",
+            },
+          },
+        },
+        {
+          slice_type: "image_block",
+          primary: {
+            image: { url: "/voxenly2.jpg" },
+          },
+        },
+        {
+          slice_type: "text_block",
+          primary: {
+            text: {
+              text: "Beyond the voice capabilities, Voxenly includes a customizable web widget for seamless integration. The dashboard provides a 'Live Preview' and granular control over branding, colors, and behavior, allowing businesses to maintain a consistent professional presence across all customer touchpoints.",
+            },
+          },
+        },
+        {
+          slice_type: "image_block",
+          primary: {
+            image: { url: "/voxenly3.jpg" },
+          },
+        },
+        {
+          slice_type: "techlist",
+          primary: { heading: "Core Technologies" },
+          items: [
+            { tech_name: "AI Voice", tech_colour: "#FF6B6B" },
+            { tech_name: "Workflow Automation", tech_colour: "#4ECDC4" },
+            { tech_name: "Next.js", tech_colour: "#000000" },
+            { tech_name: "Tailwind CSS", tech_colour: "#38B2AC" },
+          ],
+        },
+      ],
+    },
+  },
+  {
     uid: "floralcraft",
     type: "project",
     tags: ["React", "Next.js", "Tailwind"],
