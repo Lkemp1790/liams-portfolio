@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Urbanist } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import clsx from "clsx";
-import PlausibleProvider from "next-plausible";
 import { settings } from "@/data";
 import { FathomAnalytics } from "./fathom";
 
@@ -30,7 +30,14 @@ export default function RootLayout({
   return (
     <html lang="en" className="bg-slate-900 text-slate-100">
       <head>
-        <PlausibleProvider domain="liamkemp.dev" />
+        <Script
+          async
+          src="https://plausible.io/js/pa-HFfaAsRLaKunQNQo5L8zk.js"
+          strategy="afterInteractive"
+        />
+        <Script id="plausible-init" strategy="afterInteractive">
+          {`window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init();`}
+        </Script>
       </head>
       <body className={clsx(urbanist.className, "relative min-h-screen")}>
         <FathomAnalytics />

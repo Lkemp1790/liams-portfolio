@@ -265,6 +265,141 @@ export const pages: Page[] = [
 
 export const projects: Page[] = [
   {
+    uid: "inkx-apparel",
+    type: "project",
+    tags: ["E-commerce", "Apparel", "Brand Site"],
+    data: {
+      title: "InkX Apparel",
+      date: "2026-03-12",
+      hover_image: { url: "/inkxapparel.png" },
+      meta_title: "InkX Apparel - Alternative Apparel Brand",
+      meta_description:
+        "A bold apparel storefront built around strong artwork, merchandise discovery, and a high-contrast brand identity.",
+      meta_image: { url: "/inkxapparel.png" },
+      live_link: { url: "https://www.inkxapparel.com/", target: "_blank" },
+      slices: [
+        {
+          slice_type: "text_block",
+          primary: {
+            text: {
+              text: "InkX Apparel is a visually aggressive e-commerce experience built to showcase limited drops, statement graphics, and a clear brand identity from the first screen. The layout leans heavily into artwork-led merchandising so the products and illustrations do most of the selling.",
+            },
+          },
+        },
+        {
+          slice_type: "text_block",
+          primary: {
+            text: {
+              text: "This project focused on presenting a distinctive apparel catalogue in a way that still feels easy to browse, with clear navigation, strong visual hierarchy, and a storefront that keeps the brand's energy intact across desktop and mobile.",
+            },
+          },
+        },
+        {
+          slice_type: "techlist",
+          primary: { heading: "Project Highlights" },
+          items: [
+            { tech_name: "E-commerce UX", tech_colour: "#A3E635" },
+            { tech_name: "Brand Identity", tech_colour: "#F97316" },
+            { tech_name: "Merchandising", tech_colour: "#22D3EE" },
+            { tech_name: "Responsive Design", tech_colour: "#FACC15" },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    uid: "elite-whisky-society",
+    type: "project",
+    tags: ["Luxury Brand", "Membership", "E-commerce"],
+    data: {
+      title: "Elite Whisky Society",
+      date: "2026-03-11",
+      hover_image: { url: "/elite-whisky-society.png" },
+      meta_title: "Elite Whisky Society - Premium Whisky Membership Site",
+      meta_description:
+        "A premium whisky brand and membership site designed to sell exclusivity, curation, and high-value collections.",
+      meta_image: { url: "/elite-whisky-society.png" },
+      live_link: {
+        url: "https://www.elitewhiskysociety.com/",
+        target: "_blank",
+      },
+      slices: [
+        {
+          slice_type: "text_block",
+          primary: {
+            text: {
+              text: "Elite Whisky Society is a premium-focused brand site built around exclusivity, curated collections, and a members-first proposition. The visual direction uses dark tones, editorial typography, and product-led imagery to position the offer at the luxury end of the market.",
+            },
+          },
+        },
+        {
+          slice_type: "text_block",
+          primary: {
+            text: {
+              text: "The site balances storytelling with conversion by giving equal weight to the brand narrative and the collection itself. Strong calls to action, clear collection pathways, and polished presentation help the experience feel aspirational without getting in the user's way.",
+            },
+          },
+        },
+        {
+          slice_type: "techlist",
+          primary: { heading: "Project Highlights" },
+          items: [
+            { tech_name: "Luxury UI", tech_colour: "#D4AF37" },
+            { tech_name: "Membership Funnel", tech_colour: "#C084FC" },
+            { tech_name: "Editorial Layout", tech_colour: "#F59E0B" },
+            { tech_name: "Responsive Design", tech_colour: "#60A5FA" },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    uid: "jacksons-temporary-kitchen-pod",
+    type: "project",
+    tags: ["Service Website", "Lead Generation", "Local Business"],
+    data: {
+      title: "Jackson's Temporary Kitchen Pods",
+      date: "2026-03-10",
+      hover_image: { url: "/jacksons-temporary-kitchen-pod.png" },
+      meta_title: "Jackson's Temporary Kitchen Pods - Kitchen Pod Hire UK",
+      meta_description:
+        "A service-led website for temporary kitchen pod hire, built to explain the offer clearly and convert renovation and emergency enquiries.",
+      meta_image: { url: "/jacksons-temporary-kitchen-pod.png" },
+      live_link: {
+        url: "https://www.jacksonstemporarykitchenpod.co.uk/",
+        target: "_blank",
+      },
+      slices: [
+        {
+          slice_type: "text_block",
+          primary: {
+            text: {
+              text: "Jackson's Temporary Kitchen Pods is a focused service website for a specialist hire business offering fully equipped temporary kitchens. The project is built around clarity: what the pod is, who it is for, and how quickly someone can book when dealing with a renovation or unexpected home damage.",
+            },
+          },
+        },
+        {
+          slice_type: "text_block",
+          primary: {
+            text: {
+              text: "The design keeps the message direct and practical while still presenting the product professionally. Large photography, concise navigation, and clear booking prompts help the site work as a straightforward lead-generation tool for a niche service.",
+            },
+          },
+        },
+        {
+          slice_type: "techlist",
+          primary: { heading: "Project Highlights" },
+          items: [
+            { tech_name: "Lead Generation", tech_colour: "#FB7185" },
+            { tech_name: "Service Clarity", tech_colour: "#34D399" },
+            { tech_name: "Conversion UX", tech_colour: "#38BDF8" },
+            { tech_name: "Responsive Design", tech_colour: "#FBBF24" },
+          ],
+        },
+      ],
+    },
+  },
+  {
     uid: "voxenly",
     type: "project",
     tags: ["AI Voice", "Automation", "Next.js", "Tailwind"],

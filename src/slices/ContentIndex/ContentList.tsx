@@ -142,7 +142,11 @@ export default function ContentList({
         className="grid border-b border-b-slate-100"
         onMouseLeave={onMouseLeave}
       >
-        {sortedItems.map((post, index) => (
+        {sortedItems.map((post, index) => {
+          const href = post.data.live_link?.url || `${urlPrefix}/${post.uid}`;
+          const target = post.data.live_link?.target;
+
+          return (
           <li
             key={index}
             ref={(el) => (itemsRef.current[index] = el)}
@@ -150,10 +154,9 @@ export default function ContentList({
             className="list-item opacity-0"
           >
             <a
-
-              href={`${urlPrefix}/${post.uid}`}
-              target={undefined}
-
+              href={href}
+              target={target}
+              rel={target === "_blank" ? "noopener noreferrer" : undefined}
               className="flex flex-col justify-between border-t border-t-slate-100 py-10  text-slate-200 md:flex-row "
               aria-label={post.data.title || ""}
             >
@@ -172,7 +175,7 @@ export default function ContentList({
               </span>
             </a>
           </li>
-        ))}
+        )})}
 
         {/* Hover element */}
         <div
