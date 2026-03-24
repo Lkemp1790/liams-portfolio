@@ -31,6 +31,14 @@ export default function ContactPage() {
           >
             Request a Project Quote <MdArrowOutward />
           </Link>
+          <Link
+            href="https://cal.com/enso-labs"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 inline-flex items-center gap-2 text-lg font-semibold text-blue-400 hover:underline"
+          >
+            Book a Call <MdArrowOutward />
+          </Link>
         </div>
 
         <div className="flex items-start justify-center md:justify-end">

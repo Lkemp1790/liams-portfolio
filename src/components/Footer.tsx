@@ -2,8 +2,7 @@ import clsx from "clsx";
 import React from "react";
 import Link from "next/link";
 import Bounded from "@/components/bounded";
-import { FaGithub, FaTwitter, FaLinkedin } from "react-icons/fa6";
-import { SiUpwork } from "react-icons/si";
+import { FaGithub, FaLinkedin } from "react-icons/fa6";
 import { settings } from "@/data";
 
 export default function Footer() {
@@ -57,14 +56,25 @@ export default function Footer() {
           {settings.data.github.url && (
             <Link
               href={settings.data.github.url}
+              target="_blank"
+              rel="noopener noreferrer"
               className="p-2 text-2xl text-slate-300 transition-all duration-150 hover:scale-125 hover:text-blue-400"
               aria-label={settings.data.name + " on GitHub"}
             >
               <FaGithub />
             </Link>
           )}
-
-
+          {settings.data.linkedin.url && (
+            <Link
+              href={settings.data.linkedin.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 text-2xl text-slate-300 transition-all duration-150 hover:scale-125 hover:text-blue-400"
+              aria-label={settings.data.name + " on LinkedIn"}
+            >
+              <FaLinkedin />
+            </Link>
+          )}
         </div>
       </div>
     </Bounded>

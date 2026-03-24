@@ -119,6 +119,7 @@ export interface Settings {
     cta_link: LinkField;
     cta_label: string;
     github: LinkField;
+    linkedin: LinkField;
     meta_title: string;
     meta_description: string;
     og_image: ImageField;
@@ -154,6 +155,7 @@ export const settings: Settings = {
     cta_link: { url: "/contact" },
     cta_label: "Get in Touch",
     github: { url: "https://github.com/liamkemp" },
+    linkedin: { url: "https://www.linkedin.com/in/liam-kemp-a7820a351/" },
     meta_title: "Liam Kemp - Developer",
     meta_description: "Portfolio of Liam Kemp",
     og_image: { url: "/default-og.jpg" },
