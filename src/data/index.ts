@@ -187,6 +187,7 @@ export const pages: Page[] = [
             { tech_name: "React", tech_colour: "#61DAFB" },
             { tech_name: "Next.js", tech_colour: "#000000" },
             { tech_name: "Tailwind", tech_colour: "#38B2AC" },
+            { tech_name: "WordPress", tech_colour: "#21759B" },
           ],
         },
       ],
