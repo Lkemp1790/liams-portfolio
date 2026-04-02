@@ -17,7 +17,7 @@ const ImageBlock = ({ slice }: ImageBlockProps): JSX.Element => {
       data-slice-variation={slice.variation}
       className="py-4 md:py-6"
     >
-      <div className="w-full max-w-prose overflow-hidden rounded-2xl border border-slate-800 bg-slate-900 shadow-xl">
+      <div className="w-full max-w-5xl overflow-hidden rounded-2xl border border-slate-800 bg-slate-900 shadow-xl">
         <PrismicNextImage
           field={slice.primary.image}
           className="w-full h-auto object-cover"

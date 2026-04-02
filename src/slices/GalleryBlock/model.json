@@ -1,0 +1,26 @@
+{
+  "id": "gallery_block",
+  "type": "SharedSlice",
+  "name": "GalleryBlock",
+  "description": "GalleryBlock",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "primary": {},
+      "items": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        }
+      }
+    }
+  ]
+}

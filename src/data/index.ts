@@ -101,6 +101,14 @@ export interface ImageBlockSlice extends Slice {
   };
 }
 
+export interface GalleryBlockSlice extends Slice {
+  slice_type: "gallery_block";
+  primary: any;
+  items: {
+    image: ImageField;
+  }[];
+}
+
 export type ContentSlice =
   | HeroSlice
   | TechlistSlice
@@ -108,7 +116,8 @@ export type ContentSlice =
   | ExperienceSlice
   | BiographySlice
   | TextBlockSlice
-  | ImageBlockSlice;
+  | ImageBlockSlice
+  | GalleryBlockSlice;
 
 // --- Documents ---
 
@@ -522,10 +531,11 @@ export const projects: Page[] = [
           },
         },
         {
-          slice_type: "image_block",
-          primary: {
-            image: { url: "/floralcraft.jpg" },
-          },
+          slice_type: "gallery_block",
+          primary: {},
+          items: [
+            { image: { url: "/floralcraft.jpg" } }
+          ],
         },
         {
           slice_type: "techlist",
@@ -552,31 +562,55 @@ export const projects: Page[] = [
       meta_title: "Saltburn Pool League - League Management",
       meta_description:
         "Automated pool league management system with captain portals.",
-      meta_image: { url: "" },
+      meta_image: { url: "/pool2.jpg" },
       live_link: { url: "https://saltburnpool.com/", target: "_blank" },
       slices: [
         {
           slice_type: "text_block",
           primary: {
-            text: "<strong>Problem:</strong> A local sports league was manually processing hundreds of match results on paper, leading to errors, delayed league tables, and frustrated players who wanted instant updates.",
+            text: "<h2>The Challenge</h2><p>The Saltburn Pool League has run for decades, but its admin process hadn't changed in years. Every week, match results were written on paper scorecards, collected by hand, manually entered into a spreadsheet, and then copy-pasted onto a basic website. The process was slow, error-prone, and completely opaque to players.</p><p>Captains would submit results days late. Totals were miscalculated. League tables were out of date for days at a time. Players had no way to check the standings after a match night without waiting for someone to update a spreadsheet. The league was growing — and the admin overhead was becoming unsustainable.</p>",
           },
         },
         {
           slice_type: "text_block",
           primary: {
-            text: "<strong>Solution:</strong> Developed a full-stack automated league management system using Next.js and Supabase. Team captains input scores via secure portals, which triggers real-time calculations for league standings and individual player statistics.",
-          },
-        },
-        {
-          slice_type: "image_block",
-          primary: {
-            image: { url: "/pool1.jpg" },
+            text: "<h2>The Solution</h2><p>I built a fully automated, real-time league management platform using Next.js and Supabase. The system replaced the entire paper-based workflow — from result submission through to live league table updates — with a seamless digital flow that works on any device.</p><p>The architecture was designed around three distinct user roles: <strong>players</strong> who browse fixtures and standings, <strong>captains</strong> who submit and manage match results, and <strong>administrators</strong> who configure and run the season.</p>",
           },
         },
         {
           slice_type: "text_block",
           primary: {
-            text: "<strong>Impact:</strong> Eliminated 100% of manual data entry for administrators. Provided players with instant, error-free updates immediately after matches, modernizing the league's entire operation.",
+            text: "<h2>Captain Portal &amp; Scorecards</h2><p>Each team captain receives a secure, magic-link login that authenticates them without a password. Once inside their portal, they can see their upcoming fixtures, view the full schedule, and submit match results via an interactive digital scorecard.</p><p>The scorecard mirrors the physical card they'd previously fill in by hand — frame by frame, player by player — but calculates running totals automatically and flags any inconsistencies before submission. Once submitted, the result is locked and the league table recalculates instantly. No waiting. No manual data entry required.</p>",
+          },
+        },
+        {
+          slice_type: "gallery_block",
+          primary: {},
+          items: [
+            { image: { url: "/pool2.jpg" } },
+            { image: { url: "/pool1.png" } },
+            { image: { url: "/pool2.png" } },
+            { image: { url: "/pool3.png" } },
+            { image: { url: "/pool4.png" } },
+            { image: { url: "/pool5.png" } }
+          ],
+        },
+        {
+          slice_type: "text_block",
+          primary: {
+            text: "<h2>Live Fixtures &amp; Tables</h2><p>The public-facing site shows live fixture lists with real-time scores as matches are submitted. The league table updates the moment a result is confirmed — players can check standings on their phone the same night the match is played.</p><p>Fixtures are grouped by round and date, with clear status indicators showing whether a match is upcoming, in progress, or completed. Individual player statistics — including frames won, win percentage, and form — are tracked automatically from submitted scorecards.</p>",
+          },
+        },
+        {
+          slice_type: "text_block",
+          primary: {
+            text: "<h2>Admin: Auto Season Generation</h2><p>One of the most powerful features is the admin dashboard's round-robin season builder. The admin simply selects the participating teams and the number of legs, and the system automatically generates the full season fixture list — applying standard round-robin scheduling algorithms to ensure each team plays every other team the correct number of times.</p><p>Admins can preview the generated schedule before confirming it, making bulk edits if needed. Once published, fixtures are immediately live and captains are notified. What previously took hours of manual scheduling now takes under a minute.</p>",
+          },
+        },
+        {
+          slice_type: "text_block",
+          primary: {
+            text: "<h2>The Impact</h2><p>The platform eliminated 100% of manual data entry for administrators and removed the delay between a match being played and the league table reflecting it. Players now check the site the same evening — engagement has measurably increased and the committee spends far less time on admin each week.</p><ul><li><strong>Zero</strong> manual result entry by admins</li><li><strong>Instant</strong> league table updates after captain submission</li><li><strong>Full season</strong> fixture schedules generated in under 60 seconds</li><li><strong>Secure</strong> captain portals with magic-link authentication</li><li><strong>Live</strong> frame-by-frame scorecard system</li></ul>",
           },
         },
         {
@@ -586,7 +620,7 @@ export const projects: Page[] = [
           items: [
             { tech_name: "Next.js", tech_colour: "#000000" },
             { tech_name: "Supabase", tech_colour: "#3ECF8E" },
-            { tech_name: "Tailwind", tech_colour: "#38B2AC" },
+            { tech_name: "Tailwind CSS", tech_colour: "#38B2AC" },
             { tech_name: "TypeScript", tech_colour: "#3178C6" },
           ],
         },
@@ -620,10 +654,11 @@ export const projects: Page[] = [
           },
         },
         {
-          slice_type: "image_block",
-          primary: {
-            image: { url: "/screenshot-2026-04-02_08-29-05.png" },
-          },
+          slice_type: "gallery_block",
+          primary: {},
+          items: [
+            { image: { url: "/screenshot-2026-04-02_08-29-05.png" } }
+          ],
         },
         {
           slice_type: "text_block",
@@ -632,10 +667,11 @@ export const projects: Page[] = [
           },
         },
         {
-          slice_type: "image_block",
-          primary: {
-            image: { url: "/screenshot-2026-04-02_08-35-45.png" },
-          },
+          slice_type: "gallery_block",
+          primary: {},
+          items: [
+            { image: { url: "/screenshot-2026-04-02_08-35-45.png" } }
+          ],
         },
         {
           slice_type: "techlist",

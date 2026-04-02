@@ -57,7 +57,7 @@ const TechList = ({ slice }: TechListProps): JSX.Element => {
         data-slice-variation={slice.variation}
         className="py-4 md:py-6"
       >
-        <div className="w-full max-w-prose">
+        <div className="w-full max-w-3xl">
           <h3 className="mb-5 text-xs font-bold uppercase tracking-widest text-slate-500">
             {slice.primary.heading}
           </h3>

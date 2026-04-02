@@ -26,7 +26,7 @@ const caseStudies = [
     problem:
       "A local sports league was manually processing hundreds of match results, leading to errors, delayed league tables, and frustrated players.",
     solution:
-      "Developed a full-stack automated league management system. Team captains input scores via secure portals, triggering real-time calculations for league standings, player statistics, and win/loss records.",
+      "Developed a full-stack automated league management system. Features include captain portals for digital scorecards, live score updates on fixture tables, and an admin dashboard for auto-creating round-robin seasons.",
     impact:
       "Eliminated 100% of manual data entry for administrators. Provided players with instant, error-free updates immediately after matches, transforming the league's digital experience.",
     tech: ["React", "TypeScript", "Supabase", "Tailwind CSS"],
