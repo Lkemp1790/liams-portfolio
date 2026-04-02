@@ -11,29 +11,23 @@ import Heading from "@/components/Heading";
 
 gsap.registerPlugin(ScrollTrigger);
 
-/**
- * Props for `TechList`.
- */
 export type TechListProps = SliceComponentProps<TechlistSlice>;
 
-/**
- * Component for "TechList" Slices.
- */
 const TechList = ({ slice }: TechListProps): JSX.Element => {
   const component = useRef(null);
+  const isCompact = slice.slice_label === "compact";
 
   useLayoutEffect(() => {
+    if (isCompact) return;
     let ctx = gsap.context(() => {
-      // create as many GSAP animations and/or ScrollTriggers here as you want...
       const tl = gsap.timeline({
         scrollTrigger: {
-          pin: true, // pin the trigger element while active
+          pin: true,
           start: "top bottom",
           end: "bottom top",
           scrub: 4,
         },
       });
-
       tl.fromTo(
         ".tech-row",
         {
@@ -53,8 +47,39 @@ const TechList = ({ slice }: TechListProps): JSX.Element => {
         },
       );
     }, component);
-    return () => ctx.revert(); // cleanup!
-  }, []);
+    return () => ctx.revert();
+  }, [isCompact]);
+
+  if (isCompact) {
+    return (
+      <Bounded
+        data-slice-type={slice.slice_type}
+        data-slice-variation={slice.variation}
+        className="py-4 md:py-6"
+      >
+        <div className="w-full max-w-prose">
+          <h3 className="mb-5 text-xs font-bold uppercase tracking-widest text-slate-500">
+            {slice.primary.heading}
+          </h3>
+          <div className="flex flex-wrap gap-3">
+            {slice.items.map(({ tech_name, tech_colour }, index) => (
+              <span
+                key={index}
+                className="rounded-full border px-4 py-1.5 text-sm font-semibold"
+                style={{
+                  borderColor: tech_colour || "#334155",
+                  color: tech_colour || "#cbd5e1",
+                  backgroundColor: tech_colour ? `${tech_colour}18` : "transparent",
+                }}
+              >
+                {tech_name}
+              </span>
+            ))}
+          </div>
+        </div>
+      </Bounded>
+    );
+  }
 
   return (
     <section
@@ -78,9 +103,7 @@ const TechList = ({ slice }: TechListProps): JSX.Element => {
           {Array.from({ length: 15 }, (_, index) => (
             <React.Fragment key={index}>
               <span
-                className={
-                  "tech-item text-8xl font-extrabold uppercase tracking-tighter"
-                }
+                className="tech-item text-8xl font-extrabold uppercase tracking-tighter"
                 style={{
                   color: index === 7 && tech_colour ? tech_colour : "inherit",
                 }}

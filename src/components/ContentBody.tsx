@@ -15,45 +15,53 @@ export default function ContentBody({
 }) {
   const formattedDate = formatDate(page.data.date);
   return (
-    <Bounded as="article">
-      <div className="rounded-2xl border-2 border-slate-800 bg-slate-900 px-4 py-10 md:px-8 md:py-20">
-        <Heading as="h1">{page.data.title}</Heading>
-        <div className="flex gap-4 text-blue-400">
-          {page.tags.map((tag, index) => (
-            <span key={index} className="text-xl font-bold">
-              {tag}
-            </span>
-          ))}
-        </div>
-        <p className="mt-8 border-b border-slate-600 text-xl font-medium text-slate-300">
-          {formattedDate}
-        </p>
+    <article className="py-16 md:py-24">
+      {/* Header: title, tags, CTA, hero image — constrained width */}
+      <Bounded className="pb-0">
+        <div className="w-full flex max-w-prose flex-col gap-6">
+          <p className="text-sm font-bold uppercase tracking-widest text-slate-400">
+            {formattedDate}
+          </p>
+          <Heading as="h1" size="xl">
+            {page.data.title}
+          </Heading>
 
-        {page.data.live_link && (
-          <div className="mt-8">
-            <Button
-              linkField={page.data.live_link}
-              label="View Live Site"
-              className="text-slate-900 bg-blue-400 border-blue-400 hover:bg-blue-300"
-            />
+          <div className="flex flex-wrap gap-3">
+            {page.tags.map((tag, index) => (
+              <span
+                key={index}
+                className="rounded-full bg-slate-800/50 px-4 py-1.5 text-sm font-medium text-slate-300"
+              >
+                {tag}
+              </span>
+            ))}
           </div>
-        )}
 
-        {/* Featured Image */}
-        {page.data.hover_image?.url && (
-          <div className="mt-8 rounded-xl overflow-hidden border-2 border-slate-800">
-             <PrismicNextImage
-               field={page.data.hover_image}
-               className="w-full h-auto object-cover"
-               priority
-             />
-          </div>
-        )}
+          {page.data.live_link && (
+            <div className="mt-2">
+              <Button
+                linkField={page.data.live_link}
+                label="View Live Project"
+                className="border-blue-400 bg-blue-400 text-slate-950 hover:bg-blue-300"
+              />
+            </div>
+          )}
 
-        <div className="prose prose-lg prose-invert mt-12 w-full max-w-none md:mt-20">
-          <SliceZone slices={page.data.slices} components={components} />
+          {/* Featured Image */}
+          {page.data.hover_image?.url && (
+            <div className="mt-8 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900 shadow-2xl">
+              <PrismicNextImage
+                field={page.data.hover_image}
+                className="h-auto w-full object-cover"
+                priority
+              />
+            </div>
+          )}
         </div>
-      </div>
-    </Bounded>
+      </Bounded>
+
+      {/* Slices — each uses its own Bounded for consistent alignment */}
+      <SliceZone slices={page.data.slices} components={components} />
+    </article>
   );
 }

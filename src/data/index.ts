@@ -169,7 +169,8 @@ export const pages: Page[] = [
     tags: [],
     data: {
       meta_title: "Home",
-      meta_description: "Welcome to my portfolio",
+      meta_description:
+        "Full-stack developer building AI-powered web applications and automation systems.",
       meta_image: { url: "" },
       slices: [
         {
@@ -177,18 +178,28 @@ export const pages: Page[] = [
           primary: {
             first_name: "Liam",
             last_name: "Kemp",
-            tag_line: "Creative Developer",
+            tag_line:
+              "Full-Stack Developer building AI-powered web applications and automation systems",
           },
         },
         {
           slice_type: "techlist",
-          primary: { heading: "Tech Stack" },
+          primary: { heading: "Core Expertise" },
           items: [
             { tech_name: "React", tech_colour: "#61DAFB" },
             { tech_name: "Next.js", tech_colour: "#000000" },
-            { tech_name: "Tailwind", tech_colour: "#38B2AC" },
+            { tech_name: "TypeScript", tech_colour: "#3178C6" },
+            { tech_name: "Node.js", tech_colour: "#339933" },
+            { tech_name: "PostgreSQL", tech_colour: "#336791" },
             { tech_name: "WordPress", tech_colour: "#21759B" },
+            { tech_name: "AI & Automation", tech_colour: "#10B981" },
           ],
+        },
+        {
+          slice_type: "text_block",
+          primary: {
+            text: "<h2>How I Work</h2><p>I focus on delivering working solutions quickly rather than over-engineering. My priority is real-world impact—identifying the core bottleneck and building reliable software to solve it. I use modern tools, including AI, to accelerate development cycles while ensuring the underlying architecture is robust.</p>",
+          },
         },
       ],
     },
@@ -197,17 +208,29 @@ export const pages: Page[] = [
     uid: "about",
     type: "page",
     tags: [],
-    "data": {
-      "meta_title": "About Me",
-      "meta_description": "Learn more about me",
-      "meta_image": { "url": "" },
-      "slices": [
+    data: {
+      meta_title: "About Me",
+      meta_description: "Learn more about my background, skills, and how I work.",
+      meta_image: { url: "" },
+      slices: [
         {
-          "slice_type": "biography",
-          "primary": {
-            "heading": "About Me",
-            "description": "As a versatile web and software developer, I thrive in the dynamic intersection of innovation and technology. With a keen eye for detail and a passion for crafting seamless digital experiences, I specialize in utilizing cutting-edge no-code tools, particularly Bubble, to bring ideas to life with efficiency and precision.\n\n<br /><br />\n\nMy journey into the realm of web development began with a fascination for its endless possibilities. Over the years, I have honed my skills in various programming languages and frameworks, including JavaScript and Next.js, allowing me to embrace challenges with confidence and creativity.\n\n<br /><br />\n\nMy expertise lies not only in writing code but also in harnessing the power of visual development platforms like Bubble, where I excel in rapidly prototyping and deploying complex applications without traditional coding barriers. Whether it's crafting intuitive user interfaces or implementing robust backend functionalities, I thrive on pushing the boundaries of what's possible in the digital landscape.\n\n<br /><br />\n\nBeyond coding, I'm deeply passionate about staying at the forefront of technological advancements, particularly the revolutionary capabilities of **Artificial Intelligence (AI)**. I am always eager to explore new tools and methodologies that enable me to deliver solutions that are not just effective but future-proof. By integrating AI where it makes sense, I strive to empower businesses and individuals to unlock their full potential in the digital realm.\n\n<br /><br />\n\nOn a personal note, I am also a **dedicated father**. This role has sharpened my skills in patience, problem-solving, and creative thinking—qualities I find surprisingly valuable in a development context. Being a dad reinforces my commitment to building digital solutions that are intuitive, safe, and truly benefit people's lives.\n\n<br /><br />\n\nI am an avid advocate for collaboration and continuous learning, believing that the most impactful solutions are born from diverse perspectives and collective expertise. As I continue to evolve in my journey as a developer, I look forward to embracing new challenges, pushing boundaries, and contributing to the ever-evolving landscape of technology, both with innovative code and a father's grounded perspective.",
-            "avatar": { "url": "/me.jpg" },
+          slice_type: "biography",
+          primary: {
+            heading: "About Me",
+            description: "I am a self-taught Full-Stack Developer with a background in running my own business. This combination means I don't just write code—I build systems designed to solve actual operational problems.\n\n<br /><br />\n\nHaving run a business, I understand that software needs to deliver measurable value. I focus heavily on automation, efficiency, and reducing manual work, ensuring the tools I build directly impact the bottom line.\n\n<br /><br />\n\nMy core expertise lies in React, TypeScript, and Node.js, combined with a deep interest in AI workflow systems and automation pipelines. Whether it's streamlining a complex CRM process or building a high-converting customer portal, my goal is always to deliver robust, scalable, and production-ready solutions.",
+            avatar: { url: "/me.jpg" },
+          },
+        },
+        {
+          slice_type: "text_block",
+          primary: {
+            text: "<h2>How I Work</h2><p>I focus on delivering working solutions quickly rather than over-engineering. My priority is real-world impact—identifying the core bottleneck and building reliable software to solve it. I use modern tools, including AI, to accelerate development cycles while ensuring the underlying architecture is robust. Being comfortable across the entire stack means I can design a database schema, build a secure API, and implement a polished user interface without needing handoffs.</p>",
+          },
+        },
+        {
+          slice_type: "text_block",
+          primary: {
+            text: "<h2>Current Focus</h2><p>I am actively deepening my expertise in scalable Node.js backend systems, advanced API architecture, and performance optimization within React and Next.js applications. By mastering strict TypeScript patterns and state management strategies, I ensure the systems I build today remain maintainable and performant as they scale tomorrow.</p>",
           },
         },
         {
@@ -218,21 +241,21 @@ export const pages: Page[] = [
           items: [
             {
               title: "Freelance Developer",
-              time_period: "2025 - Present",
+              time_period: "Jan 2026 - Present",
               institution: "Self-Employed",
               description:
                 "Spearheaded the development and deployment of high-quality web applications and robust digital solutions for a diverse client base. Focused on translating business objectives into scalable, efficient, and user-centric technical architectures.",
             },
             {
               title: "Lead Developer",
-              time_period: "2024 - 2025",
+              time_period: "March 2022 - December 2025",
               institution: "Elan Agency",
               description:
                 "Executed full-stack development and UX/UI design across a portfolio of agency projects, consistently meeting tight deadlines and high quality standards. Designed, developed, and integrated custom AI-powered tools for clients, resulting in improved operational efficiency and data-driven project insights.",
             },
             {
               title: "Freelance Developer",
-              time_period: "2022 - 2024",
+              time_period: "2020 - 2022",
               institution: "Self-Employed",
               description:
                 "Established a successful freelance business foundation by delivering bespoke websites and custom applications for small business clients. Managed the entire project lifecycle, from initial concept and requirements gathering to final deployment and support.",
@@ -254,10 +277,10 @@ export const pages: Page[] = [
         {
           slice_type: "content_index",
           primary: {
-            heading: "Projects",
+            heading: "Case Studies",
             content_type: "Project",
-            description: "A showcase of my recent work and experiments.",
-            view_more_text: "View Project",
+            description: "A showcase of real-world systems, applications, and business solutions.",
+            view_more_text: "View Case Study",
             fallback_item_image: { url: "" },
           },
         },
@@ -284,26 +307,29 @@ export const projects: Page[] = [
         {
           slice_type: "text_block",
           primary: {
-            text: {
-              text: "InkX Apparel is a visually aggressive e-commerce experience built to showcase limited drops, statement graphics, and a clear brand identity from the first screen. The layout leans heavily into artwork-led merchandising so the products and illustrations do most of the selling.",
-            },
+            text: "<strong>Problem:</strong> InkX Apparel needed an online storefront that could match the energy and attitude of their brand without sacrificing usability. Generic e-commerce templates made the product look cheap and buried the artwork that drives their audience.",
           },
         },
         {
           slice_type: "text_block",
           primary: {
-            text: {
-              text: "This project focused on presenting a distinctive apparel catalogue in a way that still feels easy to browse, with clear navigation, strong visual hierarchy, and a storefront that keeps the brand's energy intact across desktop and mobile.",
-            },
+            text: "<strong>Solution:</strong> Built a custom storefront with a layout designed around artwork-led merchandising. Strong visual hierarchy, high-contrast design, and a streamlined browse-to-purchase flow ensure the brand energy is felt from the first screen without getting in the way of conversion.",
+          },
+        },
+        {
+          slice_type: "text_block",
+          primary: {
+            text: "<strong>Impact:</strong> The site launched with a cohesive brand presence across desktop and mobile, with a product display approach that puts the artwork front and centre — directly supporting the drop-based sales model.",
           },
         },
         {
           slice_type: "techlist",
-          primary: { heading: "Project Highlights" },
+          slice_label: "compact",
+          primary: { heading: "Tech Used" },
           items: [
-            { tech_name: "E-commerce UX", tech_colour: "#A3E635" },
-            { tech_name: "Brand Identity", tech_colour: "#F97316" },
-            { tech_name: "Merchandising", tech_colour: "#22D3EE" },
+            { tech_name: "WordPress", tech_colour: "#21759B" },
+            { tech_name: "WooCommerce", tech_colour: "#7F54B3" },
+            { tech_name: "Custom Theme", tech_colour: "#F97316" },
             { tech_name: "Responsive Design", tech_colour: "#FACC15" },
           ],
         },
@@ -330,27 +356,30 @@ export const projects: Page[] = [
         {
           slice_type: "text_block",
           primary: {
-            text: {
-              text: "Elite Whisky Society is a premium-focused brand site built around exclusivity, curated collections, and a members-first proposition. The visual direction uses dark tones, editorial typography, and product-led imagery to position the offer at the luxury end of the market.",
-            },
+            text: "<strong>Problem:</strong> Elite Whisky Society had a premium product and a strong brand story but no digital presence capable of reflecting either. Their audience expects a luxury experience online — a generic template would immediately undermine the brand's credibility.",
           },
         },
         {
           slice_type: "text_block",
           primary: {
-            text: {
-              text: "The site balances storytelling with conversion by giving equal weight to the brand narrative and the collection itself. Strong calls to action, clear collection pathways, and polished presentation help the experience feel aspirational without getting in the user's way.",
-            },
+            text: "<strong>Solution:</strong> Designed and built a high-end brand site around editorial-style typography, dark tones, and product-led photography. The site gives equal weight to storytelling and conversion — guiding visitors through the brand narrative before presenting the collection and membership offer.",
+          },
+        },
+        {
+          slice_type: "text_block",
+          primary: {
+            text: "<strong>Impact:</strong> Delivered a polished launch platform that positions Elite Whisky Society at the luxury end of the market. Clear collection pathways and strong calls to action support membership sign-ups without disrupting the aspirational feel of the site.",
           },
         },
         {
           slice_type: "techlist",
-          primary: { heading: "Project Highlights" },
+          slice_label: "compact",
+          primary: { heading: "Tech Used" },
           items: [
-            { tech_name: "Luxury UI", tech_colour: "#D4AF37" },
+            { tech_name: "WordPress", tech_colour: "#21759B" },
+            { tech_name: "WooCommerce", tech_colour: "#7F54B3" },
+            { tech_name: "Custom Theme", tech_colour: "#D4AF37" },
             { tech_name: "Membership Funnel", tech_colour: "#C084FC" },
-            { tech_name: "Editorial Layout", tech_colour: "#F59E0B" },
-            { tech_name: "Responsive Design", tech_colour: "#60A5FA" },
           ],
         },
       ],
@@ -376,27 +405,30 @@ export const projects: Page[] = [
         {
           slice_type: "text_block",
           primary: {
-            text: {
-              text: "Jackson's Temporary Kitchen Pods is a focused service website for a specialist hire business offering fully equipped temporary kitchens. The project is built around clarity: what the pod is, who it is for, and how quickly someone can book when dealing with a renovation or unexpected home damage.",
-            },
+            text: "<strong>Problem:</strong> Jackson's offered a highly practical service — temporary kitchen pods for renovations and emergencies — but had no web presence to explain the offer or capture leads. Potential customers searching in urgent situations had no way to find or contact them quickly.",
           },
         },
         {
           slice_type: "text_block",
           primary: {
-            text: {
-              text: "The design keeps the message direct and practical while still presenting the product professionally. Large photography, concise navigation, and clear booking prompts help the site work as a straightforward lead-generation tool for a niche service.",
-            },
+            text: "<strong>Solution:</strong> Built a focused, conversion-first service site on WordPress with large product photography, a clear explanation of what the pods include, and prominent contact/booking prompts throughout. Every page element is designed to reduce friction for someone in an urgent situation.",
+          },
+        },
+        {
+          slice_type: "text_block",
+          primary: {
+            text: "<strong>Impact:</strong> Gave the business its first professional digital presence, enabling them to be found online for local search terms and convert visitors into enquiries directly from the site. The focused layout reduced drop-off and guided users straight to the contact form.",
           },
         },
         {
           slice_type: "techlist",
-          primary: { heading: "Project Highlights" },
+          slice_label: "compact",
+          primary: { heading: "Tech Used" },
           items: [
-            { tech_name: "Lead Generation", tech_colour: "#FB7185" },
-            { tech_name: "Service Clarity", tech_colour: "#34D399" },
+            { tech_name: "WordPress", tech_colour: "#21759B" },
+            { tech_name: "Local SEO", tech_colour: "#34D399" },
             { tech_name: "Conversion UX", tech_colour: "#38BDF8" },
-            { tech_name: "Responsive Design", tech_colour: "#FBBF24" },
+            { tech_name: "Lead Generation", tech_colour: "#FB7185" },
           ],
         },
       ],
@@ -419,17 +451,13 @@ export const projects: Page[] = [
         {
           slice_type: "text_block",
           primary: {
-            text: {
-              text: "Voxenly is an advanced AI voice platform that goes beyond simple voice interaction. It enables businesses to deploy intelligent voice agents that can perform real-world actions, such as scheduling appointments, updating CRM systems, and handling complex customer inquiries without human intervention.",
-            },
+            text: "Voxenly is an advanced AI voice platform that goes beyond simple voice interaction. It enables businesses to deploy intelligent voice agents that can perform real-world actions, such as scheduling appointments, updating CRM systems, and handling complex customer inquiries without human intervention.",
           },
         },
         {
           slice_type: "text_block",
           primary: {
-            text: {
-              text: "The platform's core strength lies in its 'Magic Builder,' which allows for the creation of sophisticated conversation flows using natural language instructions. As shown in the dashboard screenshots, users can simply describe how they want their agent to behave, and the AI automatically calibrates its responses and logic.",
-            },
+            text: "The platform's core strength lies in its 'Magic Builder,' which allows for the creation of sophisticated conversation flows using natural language instructions. As shown in the dashboard screenshots, users can simply describe how they want their agent to behave, and the AI automatically calibrates its responses and logic.",
           },
         },
         {
@@ -441,9 +469,7 @@ export const projects: Page[] = [
         {
           slice_type: "text_block",
           primary: {
-            text: {
-              text: "Beyond the voice capabilities, Voxenly includes a customizable web widget for seamless integration. The dashboard provides a 'Live Preview' and granular control over branding, colors, and behavior, allowing businesses to maintain a consistent professional presence across all customer touchpoints.",
-            },
+            text: "Beyond the voice capabilities, Voxenly includes a customizable web widget for seamless integration. The dashboard provides a 'Live Preview' and granular control over branding, colors, and behavior, allowing businesses to maintain a consistent professional presence across all customer touchpoints.",
           },
         },
         {
@@ -454,6 +480,7 @@ export const projects: Page[] = [
         },
         {
           slice_type: "techlist",
+          slice_label: "compact",
           primary: { heading: "Core Technologies" },
           items: [
             { tech_name: "AI Voice", tech_colour: "#FF6B6B" },
@@ -485,17 +512,13 @@ export const projects: Page[] = [
         {
           slice_type: "text_block",
           primary: {
-            text: {
-              text: "FloralCraft is a modern, full-stack e-commerce platform developed specifically for a local florist. It comprises two main components: a beautiful, responsive customer-facing storefront, and a powerful, comprehensive admin dashboard.",
-            },
+            text: "FloralCraft is a modern, full-stack e-commerce platform developed specifically for a local florist. It comprises two main components: a beautiful, responsive customer-facing storefront, and a powerful, comprehensive admin dashboard.",
           },
         },
         {
           slice_type: "text_block",
           primary: {
-            text: {
-              text: "This high-performance platform was constructed using Next.js 14 and React, ensuring optimal speed and SEO. Tailwind CSS was utilized for rapid, utility-first styling, resulting in a responsive and elegant user experience. The integrated admin dashboard provides the client with the tools necessary to manage inventory, track sales analytics, process orders, and streamline all business operations efficiently.",
-            },
+            text: "This high-performance platform was constructed using Next.js 14 and React, ensuring optimal speed and SEO. Tailwind CSS was utilized for rapid, utility-first styling, resulting in a responsive and elegant user experience. The integrated admin dashboard provides the client with the tools necessary to manage inventory, track sales analytics, process orders, and streamline all business operations efficiently.",
           },
         },
         {
@@ -506,6 +529,7 @@ export const projects: Page[] = [
         },
         {
           slice_type: "techlist",
+          slice_label: "compact",
           primary: { heading: "Technologies Used" },
           items: [
             { tech_name: "React", tech_colour: "#61DAFB" },
@@ -534,17 +558,13 @@ export const projects: Page[] = [
         {
           slice_type: "text_block",
           primary: {
-            text: {
-              text: "A comprehensive league management platform built for the Saltburn Pool League. This application digitizes the entire league operation, streamlining what was once a manual, paper-heavy process into a seamless digital experience.",
-            },
+            text: "<strong>Problem:</strong> A local sports league was manually processing hundreds of match results on paper, leading to errors, delayed league tables, and frustrated players who wanted instant updates.",
           },
         },
         {
           slice_type: "text_block",
           primary: {
-            text: {
-              text: "The core of the system is its automation engine. Team captains have access to secure admin pages where they input match scores. The system then automatically calculates and updates the league tables, individual player statistics, and win/loss records in real-time. This automated workflow ensures 100% accuracy and provides players with up-to-date insights immediately after games.",
-            },
+            text: "<strong>Solution:</strong> Developed a full-stack automated league management system using Next.js and Supabase. Team captains input scores via secure portals, which triggers real-time calculations for league standings and individual player statistics.",
           },
         },
         {
@@ -554,8 +574,15 @@ export const projects: Page[] = [
           },
         },
         {
+          slice_type: "text_block",
+          primary: {
+            text: "<strong>Impact:</strong> Eliminated 100% of manual data entry for administrators. Provided players with instant, error-free updates immediately after matches, modernizing the league's entire operation.",
+          },
+        },
+        {
           slice_type: "techlist",
-          primary: { heading: "Technologies Used" },
+          slice_label: "compact",
+          primary: { heading: "Tech Used" },
           items: [
             { tech_name: "Next.js", tech_colour: "#000000" },
             { tech_name: "Supabase", tech_colour: "#3ECF8E" },
@@ -583,28 +610,42 @@ export const projects: Page[] = [
         {
           slice_type: "text_block",
           primary: {
-            text: {
-              text: "Enso Labs helps businesses leverage cutting-edge AI technologies to drive efficiency, innovation, and growth. The platform showcases bespoke AI solutions, from CRM and workflow automation to intelligent voice agents and automated SMS/email nurturing systems.",
-            },
+            text: "<strong>Problem:</strong> Growth teams were losing hours daily juggling disconnected tools for lead generation, campaign delivery, mailbox operations, and SMS follow-ups. The lack of a unified system caused inefficiencies and poor deliverability control.",
           },
         },
         {
           slice_type: "text_block",
           primary: {
-            text: {
-              text: "The website acts as a central hub for their services, detailing their process from discovery and analysis to deployment and training. It highlights real-world case studies in healthcare and finance, demonstrating how custom AI agents can significantly reduce operational costs and improve customer satisfaction.",
-            },
+            text: "<strong>Solution:</strong> Architected and built a centralised internal admin platform using Next.js and Node.js. It manages lead pipelines, AI-personalised email campaigns, DNS/mailbox provisioning, warmup recovery, and automated SMS sequences from a single unified dashboard.",
           },
         },
-
+        {
+          slice_type: "image_block",
+          primary: {
+            image: { url: "/screenshot-2026-04-02_08-29-05.png" },
+          },
+        },
+        {
+          slice_type: "text_block",
+          primary: {
+            text: "<strong>Impact:</strong> Replaced 4+ disjointed SaaS tools, reducing manual campaign setup time by 80% while providing tighter operational control over email deliverability at scale. The system enables real operators to manage quality without getting bogged down in manual tasks.",
+          },
+        },
+        {
+          slice_type: "image_block",
+          primary: {
+            image: { url: "/screenshot-2026-04-02_08-35-45.png" },
+          },
+        },
         {
           slice_type: "techlist",
-          primary: { heading: "Key Technologies" },
+          slice_label: "compact",
+          primary: { heading: "Tech Used" },
           items: [
-            { tech_name: "AI Integration", tech_colour: "#FF6B6B" },
-            { tech_name: "Automation", tech_colour: "#4ECDC4" },
+            { tech_name: "AI Personalisation", tech_colour: "#FF6B6B" },
+            { tech_name: "Email + SMS Automation", tech_colour: "#4ECDC4" },
             { tech_name: "Next.js", tech_colour: "#000000" },
-            { tech_name: "Tailwind", tech_colour: "#38B2AC" },
+            { tech_name: "Operational Dashboards", tech_colour: "#38B2AC" },
           ],
         },
       ],
@@ -626,26 +667,29 @@ export const projects: Page[] = [
         {
           slice_type: "text_block",
           primary: {
-            text: {
-              text: "The New Marske Institute Club is a central hub for the local community. This project involved redesigning their online presence to better showcase their events, membership benefits, and facilities.",
-            },
+            text: "<strong>Problem:</strong> New Marske Institute Club had an outdated website that didn't reflect the recent renovations or the club's active events schedule. Members couldn't easily find information and new visitors had no reason to engage with the digital presence.",
           },
         },
         {
           slice_type: "text_block",
           primary: {
-            text: {
-              text: "The website features an easy-to-update events calendar, photo galleries of club renovations, and clear information for members. It serves as the primary digital touchpoint for existing members and new visitors alike.",
-            },
+            text: "<strong>Solution:</strong> Rebuilt the site in React with a clean, modern design. Added a structured events section, renovation photo galleries, and clear information pages for both members and prospective visitors. The layout is easy to navigate on any device and straightforward for the club to maintain.",
+          },
+        },
+        {
+          slice_type: "text_block",
+          primary: {
+            text: "<strong>Impact:</strong> The club now has a polished digital home that accurately reflects what they offer. Members have a reliable place to check events, and new visitors get a clear picture of the facilities and community before walking through the door.",
           },
         },
         {
           slice_type: "techlist",
-          primary: { heading: "Technologies Used" },
+          slice_label: "compact",
+          primary: { heading: "Tech Used" },
           items: [
             { tech_name: "React", tech_colour: "#61DAFB" },
-            { tech_name: "Tailwind", tech_colour: "#38B2AC" },
-            { tech_name: "Vercel", tech_colour: "#000000" },
+            { tech_name: "Tailwind CSS", tech_colour: "#38B2AC" },
+            { tech_name: "Vercel", tech_colour: "#6366F1" },
           ],
         },
       ],

@@ -1,42 +1,35 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MdArrowOutward } from "react-icons/md";
-import { Page, ContentIndexSlice } from "@/data";
+import { Page, ImageField, ContentIndexSlice } from "@/data";
+import Link from "next/link";
+import PrismicNextImage from "@/components/PrismicNextImage";
 
 gsap.registerPlugin(ScrollTrigger);
 
 type ContentListProps = {
   items: Page[];
+  fallbackItemImage: ImageField;
+  viewMoreText: string;
   contentType: ContentIndexSlice["primary"]["content_type"];
-  fallbackItemImage: ContentIndexSlice["primary"]["fallback_item_image"];
-  viewMoreText: ContentIndexSlice["primary"]["view_more_text"];
 };
 
 export default function ContentList({
   items,
-  contentType,
   fallbackItemImage,
-  viewMoreText = "Read More",
+  viewMoreText = "View Case Study",
+  contentType,
 }: ContentListProps) {
   const component = useRef(null);
-  const itemsRef = useRef<Array<HTMLLIElement | null>>([]);
-
-  const revealRef = useRef(null);
-  const [currentItem, setCurrentItem] = useState<null | number>(null);
-  const [hovering, setHovering] = useState(false);
-  const lastMousePos = useRef({ x: 0, y: 0 });
-
-  const urlPrefix = contentType === "Blog" ? "/blog" : "/projects";
 
   useEffect(() => {
-    // Animate list-items in with a stagger
     let ctx = gsap.context(() => {
-      itemsRef.current.forEach((item, index) => {
+      items.forEach((item, index) => {
         gsap.fromTo(
-          item,
+          `.content-item-${index}`,
           {
             opacity: 0,
             y: 20,
@@ -44,72 +37,23 @@ export default function ContentList({
           {
             opacity: 1,
             y: 0,
-            duration: 1.3,
-            ease: "elastic.out(1,0.3)",
-            stagger: 0.2,
+            duration: 1,
+            ease: "power3.out",
             scrollTrigger: {
-              trigger: item,
-              start: "top bottom-=100px",
-              end: "bottom center",
-              toggleActions: "play none none none",
+              trigger: `.content-item-${index}`,
+              start: "top 80%",
             },
           }
         );
       });
-
-      return () => ctx.revert(); // cleanup!
     }, component);
-  }, []);
 
-  useEffect(() => {
-    // Mouse move event listener
-    const handleMouseMove = (e: MouseEvent) => {
-      const mousePos = { x: e.clientX, y: e.clientY + window.scrollY };
-      // Calculate speed and direction
-      const speed = Math.sqrt(Math.pow(mousePos.x - lastMousePos.current.x, 2));
+    return () => ctx.revert();
+  }, [items]);
 
-      let ctx = gsap.context(() => {
-        // Animate the image holder
-        if (currentItem !== null) {
-          const maxY = window.scrollY + window.innerHeight - 350;
-          const maxX = window.innerWidth - 250;
+  const urlPrefix = contentType === "Blog" ? "/blog" : "/projects";
 
-          gsap.to(revealRef.current, {
-            x: gsap.utils.clamp(0, maxX, mousePos.x - 110),
-            y: gsap.utils.clamp(0, maxY, mousePos.y - 160),
-            rotation: speed * (mousePos.x > lastMousePos.current.x ? 1 : -1), // Apply rotation based on speed and direction
-            ease: "back.out(2)",
-            duration: 1.3,
-          });
-          gsap.to(revealRef.current, {
-            opacity: hovering ? 1 : 0,
-            visibility: "visible",
-            ease: "power3.out",
-            duration: 0.4,
-          });
-        }
-        lastMousePos.current = mousePos;
-        return () => ctx.revert(); // cleanup!
-      }, component);
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, [hovering, currentItem]);
-
-  const onMouseEnter = (index: number) => {
-    setCurrentItem(index);
-    if (!hovering) setHovering(true);
-  };
-
-  const onMouseLeave = () => {
-    setHovering(false);
-    setCurrentItem(null);
-  };
- const sortedItems = items
+  const sortedItems = items
   .slice()
   .sort((a: any, b: any) => {
     const dateA = new Date(a.data.date);
@@ -117,76 +61,81 @@ export default function ContentList({
     return dateA.getTime() - dateB.getTime();
   })
   .reverse();
-  const contentImages = sortedItems.map((item) => {
-    const image = (item.data.hover_image && item.data.hover_image.url)
-      ? item.data.hover_image
-      : fallbackItemImage;
-    return image?.url || "";
-  });
-
-  // Preload images
-  useEffect(() => {
-    contentImages.forEach((url) => {
-      if (!url) return;
-      const img = new Image();
-      img.src = url;
-    });
-  }, [contentImages]);
-
-
 
   return (
-    <>
-      <ul
-        ref={component}
-        className="grid border-b border-b-slate-100"
-        onMouseLeave={onMouseLeave}
-      >
-        {sortedItems.map((post, index) => {
-          const href = post.data.live_link?.url || `${urlPrefix}/${post.uid}`;
-          const target = post.data.live_link?.target;
+    <div ref={component} className="flex flex-col gap-12 md:gap-20">
+      {sortedItems.map((item, index) => {
+        const title = item.data.title || "Untitled";
+        const metaDescription = item.data.meta_description || "";
+        const image = item.data.hover_image?.url
+          ? item.data.hover_image
+          : fallbackItemImage;
+        const href = `${urlPrefix}/${item.uid}`;
+        const liveLink = item.data.live_link?.url;
 
-          return (
-          <li
+        return (
+          <article
             key={index}
-            ref={(el) => (itemsRef.current[index] = el)}
-            onMouseEnter={() => onMouseEnter(index)}
-            className="list-item opacity-0"
+            className={`content-item-${index} group flex flex-col gap-8 md:gap-12 lg:items-center ${
+              index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
+            }`}
           >
-            <a
-              href={href}
-              target={target}
-              rel={target === "_blank" ? "noopener noreferrer" : undefined}
-              className="flex flex-col justify-between border-t border-t-slate-100 py-10  text-slate-200 md:flex-row "
-              aria-label={post.data.title || ""}
-            >
-              <div className="flex flex-col">
-                <span className="text-3xl font-bold">{post.data.title}</span>
-                <div className="flex gap-3 text-blue-400">
-                  {post.tags.map((tag, index) => (
-                    <span key={index} className="text-lg font-bold">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+            {/* Image Container */}
+            <div className="relative w-full overflow-hidden rounded-2xl border border-slate-800 bg-slate-900 lg:w-1/2">
+              <div className="aspect-[4/3] w-full">
+                {image?.url && (
+                  <PrismicNextImage
+                    field={image}
+                    className="h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+                  />
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-60 mix-blend-multiply" />
               </div>
-              <span className="ml-auto flex items-center gap-2 text-xl font-medium md:ml-0">
-                {viewMoreText} <MdArrowOutward />
-              </span>
-            </a>
-          </li>
-        )})}
+            </div>
 
-        {/* Hover element */}
-        <div
-          className="hover-reveal pointer-events-none absolute left-0 top-0 -z-10 md:h-[320px] md:w-[320px] h-[220px] w-[220px] rounded-lg bg-cover bg-center opacity-0 transition-[background] duration-300 bg-no-repeat"
-          style={{
-            backgroundImage:
-              currentItem !== null ? `url(${contentImages[currentItem]})` : "",
-          }}
-          ref={revealRef}
-        ></div>
-      </ul>
-    </>
+            {/* Content Container */}
+            <div className="flex w-full flex-col lg:w-1/2">
+              <div className="flex flex-wrap gap-2 mb-4">
+                {item.tags.slice(0, 3).map((t) => (
+                  <span
+                    key={t}
+                    className="rounded-full bg-slate-800/50 px-3 py-1 text-xs font-medium text-slate-400"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+
+              <h3 className="text-3xl font-bold tracking-tight text-slate-50 md:text-4xl">
+                {title}
+              </h3>
+
+              <p className="mt-4 text-lg leading-relaxed text-slate-300">
+                {metaDescription}
+              </p>
+
+              <div className="mt-8 flex flex-wrap items-center gap-6">
+                <Link
+                  href={href}
+                  className="inline-flex items-center gap-2 border-b border-transparent pb-1 text-sm font-bold uppercase tracking-widest text-slate-50 transition-colors hover:border-slate-50 hover:text-white"
+                >
+                  {viewMoreText} <MdArrowOutward className="text-lg" />
+                </Link>
+                {liveLink && (
+                  <a
+                    href={liveLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-400 transition-colors hover:text-slate-200"
+                  >
+                    Live Site <MdArrowOutward className="text-base" />
+                  </a>
+                )}
+              </div>
+            </div>
+          </article>
+        );
+      })}
+    </div>
   );
 }

@@ -1,9 +1,10 @@
 "use client";
-import { KeyTextField, HeroSlice, SliceComponentProps } from "@/data";
+import { HeroSlice, SliceComponentProps } from "@/data";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import Bounded from "@/components/bounded";
-import { Shapes } from "./Shapes";
+import Button from "@/components/Button";
+import Avatar from "@/components/Avatar";
 
 /**
  * Props for `Hero`.
@@ -21,75 +22,105 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
       gsap
         .timeline()
         .fromTo(
-          ".name-animation",
-          { x: -100, opacity: 0, rotate: -10 },
+          ".hero-eyebrow, .hero-heading, .hero-copy, .hero-actions, .hero-proof",
+          { y: 24, opacity: 0 },
           {
-            x: 0,
+            y: 0,
             opacity: 1,
-            rotate: 0,
-
-            ease: "elastic.out(1,0.3)",
-            duration: 1,
-            transformOrigin: "left top",
-            delay: 0.5,
-            stagger: { each: 0.1, from: "random" },
+            duration: 0.8,
+            ease: "power3.out",
+            delay: 0.15,
+            stagger: 0.12,
           }
         )
         .fromTo(
-          ".job-title",
+          ".hero-portrait-wrap",
+          { y: 30, opacity: 0, scale: 0.96 },
           {
-            y: 20,
-            opacity: 0,
-            scale: 1.2,
-          },
-          {
-            opacity: 1,
             y: 0,
-            duration: 1,
+            opacity: 1,
             scale: 1,
-            ease: "elastic.out(1,0.3)",
-          }
+            duration: 0.9,
+            ease: "power3.out",
+          },
+          0.2,
         );
+
+      gsap.to(".hero-portrait-wrap", {
+        y: -10,
+        duration: 2.8,
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true,
+      });
     }, component);
     return () => ctx.revert();
   }, []);
 
-  const renderLetters = (name: KeyTextField, key: string) => {
-    if (!name) return;
-    return name.split("").map((letter, index) => (
-      <span
-        key={index}
-        className={`name-animation name-animation-${key} inline-block opacity-0`}
-      >
-        {letter}
-      </span>
-    ));
-  };
+  const fullName = `${slice.primary.first_name} ${slice.primary.last_name}`.trim();
+
   return (
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       ref={component}
     >
-      <div className="grid min-h-[70vh] grid-cols-1 md:grid-cols-2 items-center">
-        <Shapes />
-        <div className="col-start-1 md:row-start-1 w-full ">
-          <h1
-            className="mb-8 text-[clamp(3rem,20vmin,20rem)] font-extrabold leading-none tracking-tighter "
-            aria-label={
-              slice.primary.first_name + " " + slice.primary.last_name
-            }
-          >
-            <span className="flex text-slate-300 items-center justify-center md:items-start md:justify-start">
-              {renderLetters(slice.primary.first_name, "first")}
-            </span>
-            <span className="-mt-[.2em] flex text-slate-500 items-center justify-center md:items-start md:justify-start">
-              {renderLetters(slice.primary.last_name, "last")}
-            </span>
+      <div className="grid min-h-[74vh] grid-cols-1 items-center gap-10 md:grid-cols-[1.2fr,0.8fr] md:gap-14">
+        <div className="w-full">
+          <p className="hero-eyebrow mb-4 text-sm font-semibold uppercase tracking-[0.28em] text-blue-300 opacity-0">
+            {fullName}
+          </p>
+          <h1 className="hero-heading max-w-4xl text-balance text-3xl font-extrabold leading-tight tracking-tight text-white opacity-0 md:text-5xl lg:text-6xl">
+            Full-Stack Developer building AI-powered web applications and automation systems
           </h1>
-          <span className="job-title block bg-gradient-to-tr from-blue-500 via-blue-200 to-blue-500 bg-clip-text text-2xl font-bold uppercase tracking-[.2em] text-transparent opacity-0 md:text-4xl items-center justify-center md:items-start md:justify-start text-center md:text-left">
-            {slice.primary.tag_line}
-          </span>
+          <p className="hero-copy mt-5 max-w-2xl text-base leading-8 text-slate-300 opacity-0 md:text-lg">
+            React, TypeScript, Node.js, scalable systems, and real-world impact. I build systems that focus on automation, efficiency, and solving complex business problems.
+          </p>
+          <div className="hero-actions mt-8 flex flex-col gap-4 opacity-0 sm:flex-row">
+            <Button
+              linkField={{ url: "/projects" }}
+              label="View Projects"
+              className="border-blue-400 bg-blue-400 text-slate-950 hover:bg-blue-300"
+            />
+            <Button
+              linkField={{ url: "/contact" }}
+              label="Contact"
+              className="border-slate-700 bg-slate-900 text-slate-100"
+            />
+          </div>
+          <div className="hero-proof mt-10 grid gap-4 border-t border-slate-800 pt-6 text-left opacity-0 sm:grid-cols-3">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
+                Frontend
+              </p>
+              <p className="mt-2 text-base text-slate-200">
+                React, Next.js, TypeScript
+              </p>
+            </div>
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
+                Backend
+              </p>
+              <p className="mt-2 text-base text-slate-200">
+                APIs, databases, auth, automations
+              </p>
+            </div>
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
+                AI Systems
+              </p>
+              <p className="mt-2 text-base text-slate-200">
+                OpenAI workflows, messaging, operations
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="hero-portrait-wrap relative mx-auto w-full max-w-sm opacity-0 md:max-w-md">
+          <div className="absolute inset-6 -z-10 rounded-[2rem] bg-blue-500/10 blur-3xl" />
+          <Avatar
+            image={{ url: "/me.jpg", alt: fullName }}
+            className="mx-auto w-full"
+          />
         </div>
       </div>
     </Bounded>
